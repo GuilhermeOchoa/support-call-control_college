@@ -32,36 +32,49 @@ git checkout -b feature/<nome-da-funcionalidade>
 git commit -m "mensagem de commit"
 ```
 
-4. Quando a funcionalidade estiver completa, faça o merge na ramificação `develop`:
+4. Quando a funcionalidade estiver completa, faça push da branch para o repositório remoto e abra um pull request no GitHub para a ramificação `develop`. O pull request deve conter uma descrição clara da funcionalidade e uma lista de verificação dos testes realizados.
 ```bash
-git checkout develop
-git merge --no-ff feature/<nome-da-funcionalidade>
+git push origin feature/<nome-da-funcionalidade>
 ```
 
-5. Crie uma nova branch a partir da ramificação `develop` para a release que deseja preparar:
+5. Peça a outro membro da equipe para revisar o pull request e fazer quaisquer comentários ou sugestões. Faça as alterações necessárias e continue a discutir o pull request com os revisores até que esteja pronto para ser mesclado.
+
+6. Quando o pull request for aprovado, faça o merge na ramificação `develop` diretamente no GitHub.
+
+7. Crie uma nova branch a partir da ramificação `develop` para a release que deseja preparar:
 ```bash
 git checkout develop
 git checkout -b release/<versão>
 ```
 
-6. Faça ajustes finais na release e faça o merge na ramificação `master` e na `develop`:
+8. Faça ajustes finais na release e faça push da branch para o repositório remoto e abra um pull request no GitHub para a ramificação `master`. O pull request deve conter uma descrição clara da versão a ser lançada e uma lista de verificação dos testes realizados.
 ```bash
-git checkout master
-git merge --no-ff release/<versão>
-git checkout develop
-git merge --no-ff release/<versão>
+git push origin release/<versão>
 ```
 
-7. Se surgir um problema crítico em produção, crie uma nova branch a partir da ramificação master para o `hotfix` que deseja implementar:
+9. Peça a outro membro da equipe para revisar o pull request e fazer quaisquer comentários ou sugestões. Faça as alterações necessárias e continue a discutir o pull request com os revisores até que esteja pronto para ser mesclado.
+
+10. Quando o pull request for aprovado, faça o merge na ramificação `master` diretamente no GitHub. Em seguida, faça o merge na ramificação `develop`.
+
+11. Crie uma nova branch a partir da ramificação `master` para a correção de um problema crítico em produção:
 ```bash
 git checkout master
-git checkout -b hotfix/<nome-do-hotfix>
+git checkout -b hotfix/<nome-do-problema>
 ```
 
-8. Corrija o problema crítico e faça o merge na ramificação `master` e na `develop`:
+12. Corrija o problema e faça push da branch para o repositório remoto e abra um pull request no GitHub para as ramificações `master` e `develop`. O pull request deve conter uma descrição clara do problema corrigido e uma lista de verificação dos testes realizados.
 ```bash
-git checkout master
-git merge --no-ff hotfix/<nome-do-hotfix>
-git checkout develop
-git merge --no-ff hotfix/<nome-do-hotfix>
+git push origin hotfix/<nome-do-problema>
+```
+
+13. Peça a outro membro da equipe para revisar o pull request e fazer quaisquer comentários ou sugestões. Faça as alterações necessárias e continue a discutir o pull request com os revisores até que esteja pronto para ser mesclado.
+
+14. Quando o pull request for aprovado, faça o merge na ramificação `master` e na `develop` diretamente no GitHub.
+
+15. Após o merge, verifique se o problema crítico foi resolvido em produção e se não há outros problemas relacionados.
+
+16. Exclua a branch de `hotfix` do repositório remoto e local:
+```bash
+git push origin --delete hotfix/<nome-do-problema>
+git branch -d hotfix/<nome-do-problema>
 ```
