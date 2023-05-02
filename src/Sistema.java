@@ -62,7 +62,10 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     // O sistema deverá permitir abrir um novo chamado. Cada chamado deve conter os
     // dados descritos na seção de detalhamento acima. O status de um chamado flui
     // apenas em uma direção: aberto -> em andamento -> concluído.
-    public void abrirChamado(Chamado chamado) {}
+    public void abrirChamado(Equipamento equipamento, String descricao) {
+        Chamado chamado = new Chamado(usuarioAtual, equipamento, descricao);
+        chamados.add(chamado);
+    }
 
 
 
