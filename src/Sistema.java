@@ -9,9 +9,9 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     private List<Chamado> chamados;
 
     public Sistema() {
-        funcionarios = new ArrayList<>();
-        equipamentos = new ArrayList<>();
-        chamados = new ArrayList<>();
+        funcionarios = new ArrayList<Funcionario>();
+        equipamentos = new ArrayList<Equipamento>();
+        chamados = new ArrayList<Chamado>();
 
         // Inicializa o sistema com alguns DEPARTMAENTOS preenchidos
         Departamento rh = new Departamento(NomeDepartamento.RH);
@@ -83,7 +83,9 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
 
     // O sistema deverá permitir pesquisar equipamentos pela descrição (Ex.
     // pesquisar por “impressora”)
-    public List<Equipamento> pesquisarEquipamentos(String descricao) {}
+    public List<Equipamento> pesquisarEquipamentos(String descricao) {
+
+    }
 
 
 
