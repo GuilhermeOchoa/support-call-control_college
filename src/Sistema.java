@@ -84,7 +84,15 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     // O sistema deverá permitir pesquisar equipamentos pela descrição (Ex.
     // pesquisar por “impressora”)
     public List<Equipamento> pesquisarEquipamentos(String descricao) {
+        ArrayList<Equipamento> equipamentosEncontrados = new ArrayList<Equipamento>();
 
+        for (Equipamento equipamento : equipamentos) {
+            if (equipamento.getDescricao().contains(descricao)) {
+                equipamentosEncontrados.add(equipamento);
+            }
+        }
+        
+        return equipamentosEncontrados;
     }
 
 
