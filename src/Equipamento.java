@@ -27,8 +27,15 @@ public class Equipamento {  //representa um equipamento da empresa
         return dataAquisicao;
     }
 
-    public String getDepartamentoInstalado(){
+    public String getSetor(){
         return setorInstalado;
+    }
+
+    public boolean setSetor (String novoSetor) {
+        if(setorInstalado.equals(novoSetor))
+            return false;
+        setorInstalado = novoSetor;
+        return true;
     }
 
     @Override
