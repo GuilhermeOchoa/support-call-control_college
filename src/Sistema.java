@@ -9,9 +9,9 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     private List<Chamado> chamados;
 
     public Sistema() {
-        funcionarios = new ArrayList<Funcionario>();
-        equipamentos = new ArrayList<Equipamento>();
-        chamados = new ArrayList<Chamado>();
+        funcionarios = new ArrayList<>();
+        equipamentos = new ArrayList<>();
+        chamados = new ArrayList<>();
 
         // Inicializa o sistema com alguns DEPARTMAENTOS preenchidos
         Departamento rh = new Departamento(NomeDepartamento.RH);
@@ -62,54 +62,41 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     // O sistema deverá permitir abrir um novo chamado. Cada chamado deve conter os
     // dados descritos na seção de detalhamento acima. O status de um chamado flui
     // apenas em uma direção: aberto -> em andamento -> concluído.
-    public void abrirChamado(Equipamento equipamento, String descricao) {
-        Chamado chamado = new Chamado(usuarioAtual, equipamento, descricao);
-        chamados.add(chamado);
-    }
+    public void abrirChamado(Chamado chamado) {}
 
 
 
     // O sistema deverá permitir que um funcionário da equipe de suporte atualize o
     // status de um chamado, mudando-o para “em andamento” ou para “concluído”.
-    public void atualizarStatusChamado(Chamado chamado, StatusChamado novoStatus) {
-        chamado.setStatus(novoStatus);
-    }
+    public void atualizarStatusChamado(Chamado chamado, StatusChamado novoStatus) {}
 
 
 
     // O sistema deverá permitir mover um equipamento de um setor para outro.
     // Somente funcionários da equipe de suporte poderão mover equipamentos
-    public void moverEquipamento(Equipamento equipamento, Departamento novoDepartamento) {}
+    public void moverEquipamento(Equipamento equipamento, String novoSetor) {
+        equipamento.setSetorInstalado(novoSetor);
+    }
 
 
 
     // O sistema deverá permitir pesquisar equipamentos pela descrição (Ex.
     // pesquisar por “impressora”)
-    public List<Equipamento> pesquisarEquipamentos(String descricao) {
-        ArrayList<Equipamento> equipamentosEncontrados = new ArrayList<Equipamento>();
-
-        for (Equipamento equipamento : equipamentos) {
-            if (equipamento.getDescricao().contains(descricao)) {
-                equipamentosEncontrados.add(equipamento);
-            }
-        }
-        
-        return equipamentosEncontrados;
-    }
+    //public List<Equipamento> pesquisarEquipamentos(String descricao) {}
 
 
 
     // O sistema deverá permitir listar todos os chamados de um determinado
     // equipamento. A listagem deverá ocorrer da mais antiga à mais recente. Todos
     // os detalhes dos chamados deverão ser exibidos.
-    public List<Chamado> listarChamadosPorEquipamento(Equipamento equipamento) {}
+    //public List<Chamado> listarChamadosPorEquipamento(Equipamento equipamento) {}
 
 
 
     // O sistema deverá permitir localizar chamados por uma palavra-chave. A busca
     // deverá ocorrer sobre os campos de nome do funcionário, descrição do
     // equipamento, nome do setor, texto da solicitação, texto da resolução
-    public List<Chamado> localizarChamadosPorPalavraChave(String palavraChave) {}
+    //public List<Chamado> localizarChamadosPorPalavraChave(String palavraChave) {}
 
 
 

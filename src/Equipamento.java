@@ -5,10 +5,10 @@ public class Equipamento {  //representa um equipamento da empresa
     private static int proximoID = 1000;
     private String descricao;
     private LocalDate dataAquisicao;
-    private Departamento setorInstalado;
+    private String setorInstalado;
     
 
-    public Equipamento(String descricao, Departamento setorInstalado) {
+    public Equipamento(String descricao, String setorInstalado) {
         this.id = proximoID++;
         this.descricao = descricao;
         this.dataAquisicao = LocalDate.now();
@@ -27,12 +27,17 @@ public class Equipamento {  //representa um equipamento da empresa
         return dataAquisicao;
     }
 
-    public Departamento getDepartamentoInstalado(){
+    public String getSetorInstalado(){
         return setorInstalado;
     }
 
-    public void setDepartamentoInstalado(Departamento setorNovo){
-       setorInstalado = setorNovo;
+    public boolean setSetorInstalado(String novoSetor){
+        //Verifica se o equipamento já está no setor
+        if(setorInstalado.equals(novoSetor))
+            return false;
+        //Altera o setor instalado pelo novo setor
+        setorInstalado = novoSetor;
+        return true;
     }
 
     @Override
