@@ -5,10 +5,10 @@ public class Equipamento {  //representa um equipamento da empresa
     private static int proximoID = 1000;
     private String descricao;
     private LocalDate dataAquisicao;
-    private String setorInstalado;
+    private Departamento setorInstalado;
     
 
-    public Equipamento(String descricao, String setorInstalado) {
+    public Equipamento(String descricao, Departamento setorInstalado) {
         this.id = proximoID++;
         this.descricao = descricao;
         this.dataAquisicao = LocalDate.now();
@@ -27,8 +27,12 @@ public class Equipamento {  //representa um equipamento da empresa
         return dataAquisicao;
     }
 
-    public String getDepartamentoInstalado(){
+    public Departamento getDepartamentoInstalado(){
         return setorInstalado;
+    }
+
+    public void setDepartamentoInstalado(Departamento setorNovo){
+       setorInstalado = setorNovo;
     }
 
     @Override
