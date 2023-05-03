@@ -73,8 +73,18 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
 
     // O sistema deverá permitir que um funcionário da equipe de suporte atualize o
     // status de um chamado, mudando-o para “em andamento” ou para “concluído”.
-    public void atualizarStatusChamado(Chamado chamado, StatusChamado novoStatus) {
-        chamado.setStatus(novoStatus);
+    public void atualizarStatusChamado(Chamado chamado) {
+        StatusChamado c= chamado.getStatus();
+        if (c == StatusChamado.ABERTO){
+            StatusChamado novoStatus=StatusChamado.EM_ANDAMENTO;
+            chamado.setStatus(novoStatus);
+            return;
+        }
+        if (c == StatusChamado.EM_ANDAMENTO){
+            StatusChamado novoStatus=StatusChamado.CONCLUIDO;
+            chamado.setStatus(novoStatus);
+            return;
+        }
     }
 
 
