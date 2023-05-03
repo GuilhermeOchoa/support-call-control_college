@@ -1,5 +1,6 @@
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class App {
@@ -73,6 +74,24 @@ class App {
     }
 
     private void listaTodosChamados() {
+        try {
+            System.out.println("Informe o ID do equipamento que você deseja exibir os chamados: ");
+            int id = entrada.nextInt();
+            ArrayList<Equipamento> aux = new ArrayList<Equipamento>();
+            for(int i = 0; i < chamados.length; i++) {
+                if(chamados.getId(i) == id){
+                    aux = listarChamadosPorEquipamento(chamados.getEquipamento());
+                }
+            }
+            for (int i = 0; i < aux.size(); i++) {
+                System.out.println("Descrição: " + aux.get(i).getDescricao());
+                System.out.println("Setor instalado: " + aux.get(i).getDepartamentoInstalado());
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("Informe um ID válido");
+        }
     }
 
     private void pesquisaEquipamentoDesc() {
