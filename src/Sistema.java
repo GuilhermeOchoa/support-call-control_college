@@ -81,7 +81,11 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
 
     // O sistema deverá permitir mover um equipamento de um setor para outro.
     // Somente funcionários da equipe de suporte poderão mover equipamentos
-    public void moverEquipamento(Equipamento equipamento, Departamento novoDepartamento) {}
+    public void moverEquipamento(Equipamento equipamento, String novoSetor) {
+        if(usuarioAtual.isSuport()){
+            equipamento.setSetor(novoSetor);
+        }
+    }
 
 
 
