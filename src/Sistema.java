@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Sistema { // representa o sistema de acompanhamento de chamados de suporte a equipamentos
@@ -87,7 +89,24 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     // O sistema deverá permitir listar todos os chamados de um determinado
     // equipamento. A listagem deverá ocorrer da mais antiga à mais recente. Todos
     // os detalhes dos chamados deverão ser exibidos.
-    public List<Chamado> listarChamadosPorEquipamento(Equipamento equipamento) {}
+    public List<Chamado> listarChamadosPorEquipamento(Equipamento equipamento) { //TODO implementar a listagem disso no menu
+
+        List<Chamado> chamadosPorEquipamento = new ArrayList<>();
+        for (Chamado chamado : chamados) {
+            if (chamado.getEquipamento().equals(equipamento)) {
+                chamadosPorEquipamento.add(chamado);
+            }
+        }
+        Collections.sort(chamadosPorEquipamento, new Comparator<Chamado>() {
+            @Override
+            public int compare(Chamado chamado, Chamado chamado2) {
+                return chamado.getDataSolicitacao().compareTo(chamado2.getDataSolicitacao());
+            }
+        });
+
+        return chamadosPorEquipamento;
+
+    }
 
 
 
