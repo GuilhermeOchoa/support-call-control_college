@@ -73,6 +73,20 @@ class App {
     }
 
     private void listaTodosChamados() {
+        try {
+            System.out.println("Informe o ID do equipamento que você deseja exibir os chamados: ");
+            int id = entrada.nextInt();
+            ArrayList<Equipamento> aux = new ArrayList<Equipamento>();
+            for(int i = 0; i < chamados.length; i++) {
+                if(chamados.getId(i) == id){
+                    aux = listarChamadosPorEquipamento(chamados.getEquipamento());
+                }
+            }
+
+
+        } catch (Exception e) {
+            System.out.println("Informe um ID válido");
+        }
     }
 
     private void pesquisaEquipamentoDesc() {
