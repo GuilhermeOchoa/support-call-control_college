@@ -11,9 +11,9 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     private List<Chamado> chamados;
 
     public Sistema() {
-        funcionarios = new ArrayList<>();
-        equipamentos = new ArrayList<>();
-        chamados = new ArrayList<>();
+        funcionarios = new ArrayList<Funcionario>();
+        equipamentos = new ArrayList<Equipamento>();
+        chamados = new ArrayList<Chamado>();
 
         // Inicializa o sistema com alguns DEPARTMAENTOS preenchidos
         Departamento rh = new Departamento(NomeDepartamento.RH);
@@ -64,13 +64,18 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     // O sistema deverá permitir abrir um novo chamado. Cada chamado deve conter os
     // dados descritos na seção de detalhamento acima. O status de um chamado flui
     // apenas em uma direção: aberto -> em andamento -> concluído.
-    public void abrirChamado(Chamado chamado) {}
+    public void abrirChamado(Equipamento equipamento, String descricao) {
+        Chamado chamado = new Chamado(usuarioAtual, equipamento, descricao);
+        chamados.add(chamado);
+    }
 
 
 
     // O sistema deverá permitir que um funcionário da equipe de suporte atualize o
     // status de um chamado, mudando-o para “em andamento” ou para “concluído”.
-    public void atualizarStatusChamado(Chamado chamado, StatusChamado novoStatus) {}
+    public void atualizarStatusChamado(Chamado chamado, StatusChamado novoStatus) {
+        chamado.setStatus(novoStatus);
+    }
 
 
 
@@ -82,7 +87,17 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
 
     // O sistema deverá permitir pesquisar equipamentos pela descrição (Ex.
     // pesquisar por “impressora”)
-    public List<Equipamento> pesquisarEquipamentos(String descricao) {}
+    public List<Equipamento> pesquisarEquipamentos(String descricao) {
+        ArrayList<Equipamento> equipamentosEncontrados = new ArrayList<Equipamento>();
+
+        for (Equipamento equipamento : equipamentos) {
+            if (equipamento.getDescricao().contains(descricao)) {
+                equipamentosEncontrados.add(equipamento);
+            }
+        }
+        
+        return equipamentosEncontrados;
+    }
 
 
 
