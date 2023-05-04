@@ -57,7 +57,13 @@ public class Sistema { // representa o sistema de acompanhamento de chamados de 
     // O sistema deverá permitir escolher de uma lista qual o funcionário que está
     // usando o sistema naquele momento (facilitando para não precisar implementar
     // mecanismos de login).
-    public void selecionarUsuario(Funcionario usuarioAtual) {}
+    public void selecionarUsuario(int id) {
+        for(int i = 0; i < funcionarios.size(); i++) {
+            if(id == funcionarios.get(i).getId()){
+                usuarioAtual = funcionarios.get(i);
+            }
+        }
+    }
 
 
 
